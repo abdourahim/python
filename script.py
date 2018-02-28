@@ -40,9 +40,17 @@ def myfunction (a=0,b=1):
 			print ("nombre de vie restantes : "+nbvie)
 			print ("essaye encore BAAAKAAA:")
 myfunction()
-'''
-from random import *
 
+
+
+	if (nbvie!=0):
+		print("vous avez réussi")
+	else:
+		print("vous avez perdu")
+
+
+#guess numbers
+from random import *
 def guessn ():
 	nbvie=10
 	secret=randint(1,10)
@@ -51,15 +59,60 @@ def guessn ():
 	while (nbusers != secret and nbvie!=0):
 		if (nbusers < secret):
 			print ("trop petit")
+			nbvie-=1
 		else:
 			print ("trop grand")
+			nbvie-=1
+		print ("nombre de vie restantes : "+ str(nbvie))
 		nbusers=int (input("devinez le nombre secret : "))
-		nbvie-=1
-		print ("nombre de vie restantes : "+ str(nbvie)
-	
 	if (nbvie!=0):
 		print("vous avez réussi")
 	else:
 		print("vous avez perdu")
 
 guessn()
+
+
+
+#from func import *
+
+#print (addition(5,10))
+
+
+#ma_voiture = Voiture()
+#print (ma_voiture.nom,ma_voiture.vitesse())
+
+
+
+import socket
+
+ip=socket.gethostbyname(socket.gethostname())
+
+print (ip)
+
+
+
+import os
+
+subnet = "192.168.0."
+
+for i in range(1,255):
+	hostname =subnet+str(i)
+	response =os.system("ping -n 1 " + hostname)
+	if response ==0:
+		print(hostname,'is up!')
+
+'''
+
+import easygui
+
+easygui.fileopenbox()
+
+
+
+
+
+
+
+
+
